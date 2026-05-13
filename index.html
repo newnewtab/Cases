@@ -181,6 +181,7 @@ color:#ffd27a;
 }
 
 .spinContainer{
+position:relative;
 overflow:hidden;
 border-radius:16px;
 border:2px solid #444;
@@ -218,6 +219,778 @@ margin-top:10px;
 
 .hidden{display:none}
 
+/* POLISHED CASINO STYLE */
+
+:root{
+--bg:#080b10;
+--panel:#121821;
+--panel2:#192232;
+--ink:#f7fbff;
+--muted:#9aa8bb;
+--green:#56f09a;
+--gold:#ffd166;
+--blue:#55b6ff;
+--pink:#ff6bd6;
+--red:#ff6f6f;
+}
+
+html,body{
+font-family:Inter,Segoe UI,Arial,sans-serif;
+background:
+radial-gradient(circle at 20% 0%,#1f4663 0,#101722 28%,transparent 44%),
+radial-gradient(circle at 85% 12%,#57304f 0,#16111f 26%,transparent 42%),
+linear-gradient(135deg,#07090d,#10151e 55%,#080b10);
+overflow-x:hidden;
+}
+
+body:before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);
+background-size:44px 44px;
+mask-image:linear-gradient(to bottom,#000,transparent 70%);
+animation:gridDrift 18s linear infinite;
+}
+
+@keyframes gridDrift{to{background-position:44px 44px}}
+
+.app{
+position:relative;
+padding:28px;
+animation:pageIn .55s ease both;
+}
+
+@keyframes pageIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+h2{
+font-size:48px;
+line-height:1;
+letter-spacing:0;
+text-shadow:0 0 30px #55b6ff55;
+}
+
+h2:after{
+content:" Emoji Crates";
+display:block;
+margin-top:8px;
+font-size:15px;
+font-weight:700;
+color:var(--muted);
+text-transform:uppercase;
+letter-spacing:2px;
+}
+
+.money{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:12px 18px;
+border:1px solid #ffffff18;
+border-radius:16px;
+background:linear-gradient(145deg,#172130cc,#0d121acc);
+box-shadow:0 12px 40px #0008,inset 0 1px #ffffff12;
+transition:transform .25s ease,color .25s ease;
+}
+
+.money.bump{
+transform:scale(1.06);
+color:#d7ffe8;
+}
+
+button{
+position:relative;
+overflow:hidden;
+border:1px solid #ffffff18;
+border-radius:10px;
+background:linear-gradient(145deg,#263449,#121923);
+box-shadow:0 10px 22px #0005,inset 0 1px #ffffff17;
+}
+
+button:before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(120deg,transparent,#ffffff22,transparent);
+transform:translateX(-120%);
+transition:transform .5s ease;
+}
+
+button:hover:before{transform:translateX(120%)}
+
+button:active{transform:translateY(1px) scale(.98)}
+
+#openBtn{
+letter-spacing:2px;
+text-transform:uppercase;
+background:linear-gradient(135deg,#18d18d,#28a8ff 55%,#b266ff);
+box-shadow:0 0 26px #28a8ff88,0 14px 38px #0009;
+animation:pulseOpen 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseOpen{
+0%,100%{filter:saturate(1);box-shadow:0 0 22px #28a8ff77,0 14px 38px #0009}
+50%{filter:saturate(1.25);box-shadow:0 0 38px #56f09aaa,0 18px 46px #000b}
+}
+
+.tabs{
+display:flex;
+gap:10px;
+margin:24px 0;
+}
+
+.tabs span{
+margin:0;
+border:1px solid #ffffff14;
+background:#111822cc;
+box-shadow:inset 0 1px #ffffff10;
+}
+
+.tabs span.active{
+background:linear-gradient(135deg,#253a55,#1a2433);
+color:#fff;
+box-shadow:0 0 18px #55b6ff44,inset 0 1px #ffffff20;
+}
+
+.grid{
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:18px;
+}
+
+.crate,.itemBox{
+position:relative;
+border:1px solid #ffffff14;
+background:
+linear-gradient(145deg,#1a2433e8,#0e141ee8),
+radial-gradient(circle at top,#ffffff18,transparent 50%);
+box-shadow:0 18px 40px #0008,inset 0 1px #ffffff12;
+animation:cardRise .45s ease both;
+}
+
+@keyframes cardRise{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+
+.crate:after,.itemBox:after{
+content:"";
+position:absolute;
+inset:0;
+border-radius:inherit;
+pointer-events:none;
+background:linear-gradient(135deg,#ffffff1c,transparent 34%,transparent 65%,#ffffff0d);
+}
+
+.crate:hover,.itemBox:hover{
+transform:translateY(-6px) scale(1.015);
+box-shadow:0 22px 46px #000a,0 0 24px #55b6ff22,inset 0 1px #ffffff18;
+}
+
+.crate h3,.itemName{
+letter-spacing:0;
+}
+
+.emoji{
+filter:drop-shadow(0 10px 18px #0009);
+animation:floaty 2.4s ease-in-out infinite;
+}
+
+@keyframes floaty{50%{transform:translateY(-5px) rotate(-2deg)}}
+
+.common{box-shadow:0 0 0 1px #ffffff12,0 18px 40px #0008;}
+.uncommon{box-shadow:0 0 0 1px #56f09a66,0 0 22px #56f09a30,0 18px 40px #0008;}
+.rare{box-shadow:0 0 0 1px #55b6ff77,0 0 24px #55b6ff35,0 18px 40px #0008;}
+.epic{box-shadow:0 0 0 1px #ff6bd688,0 0 28px #ff6bd635,0 18px 40px #0008;}
+
+.legendary{
+box-shadow:0 0 0 1px #ffd166,0 0 18px #ffd166aa,0 0 44px #ff8a3d66,0 18px 40px #0009;
+animation:legendGlow 1.2s infinite alternate,legendTilt 2.8s ease-in-out infinite;
+}
+
+@keyframes legendTilt{50%{filter:saturate(1.45);transform:translateY(-4px) rotate(1deg)}}
+
+.spinWrapper{
+margin-top:28px;
+}
+
+.spinOverlay{
+position:fixed;
+inset:0;
+z-index:20;
+display:grid;
+place-items:center;
+padding:24px;
+box-sizing:border-box;
+background:
+radial-gradient(circle at 50% 35%,#22344fcc,transparent 54%),
+linear-gradient(135deg,#05070beb,#121a25f2);
+backdrop-filter:blur(12px);
+opacity:0;
+visibility:hidden;
+transition:opacity .24s ease,visibility .24s ease;
+}
+
+.spinOverlay.show{
+opacity:1;
+visibility:visible;
+}
+
+.spinOverlay .spinWrapper{
+width:min(1120px,94vw);
+margin:0;
+}
+
+.spinOverlayTitle{
+text-align:center;
+margin:0 0 26px;
+font-size:28px;
+font-weight:1000;
+color:#f7fbff;
+text-shadow:0 0 24px #55b6ff88;
+}
+
+.spinOverlay .spinContainer{
+min-height:190px;
+display:flex;
+align-items:center;
+}
+
+.pointer{
+z-index:2;
+text-shadow:0 0 14px #ffd166;
+animation:pointerBounce .9s ease-in-out infinite;
+}
+
+@keyframes pointerBounce{50%{transform:translateX(-50%) translateY(4px)}}
+
+.spinContainer{
+border:1px solid #ffffff22;
+background:linear-gradient(180deg,#090d13,#030507);
+box-shadow:0 0 24px #000 inset,0 20px 48px #0008;
+}
+
+.spinContainer:before,.spinContainer:after{
+content:"";
+position:absolute;
+top:0;
+bottom:0;
+width:18%;
+z-index:1;
+pointer-events:none;
+}
+
+.spinContainer:before{left:0;background:linear-gradient(90deg,#06080c,transparent)}
+.spinContainer:after{right:0;background:linear-gradient(270deg,#06080c,transparent)}
+
+.spinTrack.spinning .spinItem .emoji{
+animation:spinPop .35s ease-in-out infinite alternate;
+}
+
+@keyframes spinPop{to{transform:scale(1.14) rotate(4deg)}}
+
+.spinItem{
+border:1px solid #ffffff12;
+box-shadow:inset 0 1px #ffffff12;
+}
+
+.inventoryHeader{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:16px;
+margin:4px 0 18px;
+flex-wrap:wrap;
+}
+
+.inventoryStats{
+color:var(--muted);
+font-weight:700;
+}
+
+.sellBtn{
+margin-top:12px;
+width:100%;
+background:linear-gradient(135deg,#25344a,#173323);
+}
+
+.sellAllBtn{
+background:linear-gradient(135deg,#1d8f62,#26bd7e);
+}
+
+.inventoryActions{
+display:flex;
+align-items:flex-end;
+gap:12px;
+flex-wrap:wrap;
+justify-content:flex-end;
+}
+
+.autosellPanel{
+display:flex;
+align-items:center;
+gap:10px;
+flex-wrap:wrap;
+max-width:760px;
+padding:10px 12px;
+border:1px solid #ffffff18;
+border-radius:14px;
+background:#0f151ecc;
+box-shadow:inset 0 1px #ffffff10;
+}
+
+.autosellPanel label{
+display:inline-flex;
+align-items:center;
+gap:7px;
+font-size:12px;
+font-weight:900;
+color:#dfe9f5;
+text-transform:uppercase;
+letter-spacing:.7px;
+white-space:nowrap;
+}
+
+.autosellPanel input{
+accent-color:#56f09a;
+}
+
+.autosellTitle{
+color:var(--muted);
+font-size:11px;
+font-weight:1000;
+text-transform:uppercase;
+letter-spacing:1.2px;
+}
+
+.emptyInventory{
+grid-column:1/-1;
+padding:28px;
+border:1px dashed #ffffff24;
+border-radius:16px;
+text-align:center;
+color:var(--muted);
+background:#0f151e99;
+}
+
+.resultToast{
+min-height:26px;
+margin:14px auto 0;
+text-align:center;
+font-weight:800;
+color:#dff8ff;
+text-shadow:0 0 16px #55b6ff;
+opacity:0;
+transform:translateY(8px) scale(.98);
+transition:.35s ease;
+}
+
+.resultToast.show{
+opacity:1;
+transform:none;
+}
+
+.popWin{
+animation:winPop .7s cubic-bezier(.2,1.4,.2,1) both;
+}
+
+@keyframes winPop{
+0%{transform:scale(.65) rotate(-6deg);filter:brightness(1)}
+55%{transform:scale(1.2) rotate(3deg);filter:brightness(1.35)}
+100%{transform:scale(1);filter:brightness(1)}
+}
+
+@media(max-width:700px){
+.app{padding:18px}
+h2{font-size:38px}
+.tabs{flex-wrap:wrap}
+.inventoryHeader{align-items:flex-start;flex-direction:column}
+#openBtn{width:100%;padding-left:20px;padding-right:20px}
+}
+
+/* GAMEPLAY UPGRADE PASS */
+
+html,body{
+font-family:"Trebuchet MS","Segoe UI Variable","Segoe UI",Arial,sans-serif;
+}
+
+body.spinLocked{
+overflow:hidden;
+}
+
+h3,h4,button,.money,.statCard,.rarityTag{
+letter-spacing:.2px;
+}
+
+.topBar{
+display:flex;
+align-items:stretch;
+justify-content:space-between;
+gap:16px;
+flex-wrap:wrap;
+margin:20px 0 24px;
+}
+
+.statStrip{
+display:grid;
+grid-template-columns:repeat(3,minmax(150px,1fr));
+gap:12px;
+flex:1;
+min-width:320px;
+}
+
+.statCard{
+padding:12px 14px;
+border:1px solid #ffffff18;
+border-radius:14px;
+background:linear-gradient(145deg,#141d2acc,#090e15cc);
+box-shadow:0 12px 34px #0007,inset 0 1px #ffffff12;
+}
+
+.statLabel{
+display:block;
+font-size:11px;
+font-weight:900;
+text-transform:uppercase;
+color:var(--muted);
+letter-spacing:1.4px;
+}
+
+.statValue{
+display:block;
+margin-top:4px;
+font-size:20px;
+font-weight:900;
+color:#f7fbff;
+}
+
+.tabs span{
+min-width:170px;
+text-align:center;
+font-size:18px;
+padding:16px 24px;
+}
+
+.grid{
+grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+}
+
+.crate{
+min-height:178px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+gap:12px;
+}
+
+.crateMeta,.lootMeta,.spinValue{
+color:var(--muted);
+font-size:14px;
+font-weight:800;
+}
+
+.cratePreview{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:6px;
+flex-wrap:wrap;
+min-height:54px;
+padding:12px;
+border:1px solid #ffffff14;
+border-radius:14px;
+background:
+radial-gradient(circle at 30% 20%,#ffffff18,transparent 36%),
+linear-gradient(145deg,#101923,#090f17);
+box-shadow:inset 0 1px #ffffff12,0 10px 26px #0006;
+}
+
+.cratePreview span{
+display:grid;
+place-items:center;
+width:34px;
+height:34px;
+font-size:25px;
+border-radius:10px;
+background:#ffffff0c;
+filter:drop-shadow(0 7px 10px #0009);
+}
+
+.cratePreview span:nth-child(2n){transform:translateY(4px) rotate(4deg)}
+.cratePreview span:nth-child(3n){transform:translateY(-3px) rotate(-5deg)}
+
+.rollDelta{
+display:block;
+height:20px;
+margin-top:5px;
+font-size:13px;
+font-weight:1000;
+opacity:0;
+transform:translateY(8px);
+}
+
+.rollDelta.show{
+animation:rollDeltaPop 1.7s ease both;
+}
+
+.rollDelta.gain{color:#67ff9d;text-shadow:0 0 14px #56f09a}
+.rollDelta.loss{color:#ff7777;text-shadow:0 0 14px #ff6f6f}
+
+@keyframes rollDeltaPop{
+0%{opacity:0;transform:translateY(10px) scale(.92)}
+18%{opacity:1;transform:translateY(0) scale(1.12)}
+70%{opacity:1;transform:translateY(0) scale(1)}
+100%{opacity:0;transform:translateY(-8px) scale(.98)}
+}
+
+.common .rarityTag{background:#ffffff18;color:#d4dae3}
+.uncommon .rarityTag{background:#56f09a22;color:#76ffad}
+.rare .rarityTag{background:#55b6ff24;color:#8fd0ff}
+.epic .rarityTag{background:#ff6bd626;color:#ff9ee7}
+.legendary .rarityTag{background:#ffd16628;color:#ffe39d}
+
+.rarityTag{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+margin:8px auto 10px;
+padding:5px 10px;
+border:1px solid #ffffff22;
+border-radius:999px;
+font-size:11px;
+font-weight:1000;
+text-transform:uppercase;
+letter-spacing:1.3px;
+}
+
+.rare:before,.epic:before,.legendary:before{
+content:"";
+position:absolute;
+inset:-1px;
+border-radius:inherit;
+pointer-events:none;
+opacity:.72;
+}
+
+.rare:before{
+background:linear-gradient(120deg,transparent 20%,#55b6ff35,transparent 80%);
+animation:rareSweep 2.4s ease-in-out infinite;
+}
+
+.epic:before{
+inset:-8px;
+background:
+linear-gradient(115deg,transparent 0 35%,#ff6bd660 45%,transparent 58%),
+linear-gradient(245deg,transparent 0 42%,#55b6ff44 50%,transparent 62%);
+filter:blur(2px);
+animation:epicPulse 2.6s ease-in-out infinite;
+}
+
+.legendary{
+animation:legendGlow 1.2s infinite alternate,legendTilt 2.8s ease-in-out infinite,legendIdle 5s ease-in-out infinite;
+}
+
+.legendary:before{
+background:
+radial-gradient(circle at 20% 20%,#fff7 0 2px,transparent 3px),
+radial-gradient(circle at 70% 30%,#ffd166cc 0 2px,transparent 4px),
+radial-gradient(circle at 42% 78%,#ff6bd6bb 0 2px,transparent 4px),
+conic-gradient(from 0deg,#ffd16622,#ff6bd622,#55b6ff22,#ffd16622);
+animation:legendAura 3.2s ease-in-out infinite;
+}
+
+@keyframes rareSweep{50%{transform:translateX(12px);opacity:1}}
+@keyframes epicSpin{to{transform:rotate(1turn)}}
+@keyframes epicPulse{
+0%,100%{transform:translateX(-8px) skewX(-10deg);opacity:.35}
+50%{transform:translateX(8px) skewX(10deg);opacity:.9}
+}
+@keyframes legendAura{
+0%,100%{transform:translateY(0) scale(1);opacity:.62}
+45%{transform:translateY(-7px) scale(1.05);opacity:1}
+70%{transform:translateY(4px) scale(.98);opacity:.78}
+}
+@keyframes legendIdle{
+0%,100%{filter:hue-rotate(0deg) saturate(1.1)}
+35%{filter:hue-rotate(18deg) saturate(1.7)}
+70%{filter:hue-rotate(-14deg) saturate(1.45)}
+}
+
+.spinItem{
+padding:16px 14px;
+min-height:138px;
+}
+
+.spinItem .emoji{
+font-size:42px;
+margin-bottom:3px;
+}
+
+.spinItem .rarityTag{
+margin:5px auto 6px;
+font-size:10px;
+}
+
+.openTop{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:16px;
+margin:6px 0 18px;
+}
+
+.openInfo{
+text-align:right;
+font-weight:900;
+color:var(--muted);
+}
+
+.sectionTitle{
+text-align:center;
+font-size:18px;
+margin:22px 0 14px;
+text-transform:uppercase;
+letter-spacing:1.4px;
+color:#dff8ff;
+}
+
+.popWin.rareWin{animation:rareWin .9s cubic-bezier(.2,1.4,.2,1) both}
+.popWin.epicWin{animation:epicWin 1.4s cubic-bezier(.2,1.2,.2,1) both}
+.popWin.legendaryWin{animation:legendaryWin 2.6s cubic-bezier(.12,1.2,.1,1) both}
+
+@keyframes rareWin{
+0%{transform:scale(.7);filter:brightness(1)}
+45%{transform:scale(1.24);filter:brightness(1.6) drop-shadow(0 0 18px #55b6ff)}
+100%{transform:scale(1);filter:brightness(1)}
+}
+
+@keyframes epicWin{
+0%{transform:scale(.55) rotate(-10deg);filter:brightness(1)}
+35%{transform:scale(1.28) rotate(7deg);filter:brightness(1.8) drop-shadow(0 0 24px #ff6bd6)}
+70%{transform:scale(.95) rotate(-3deg);filter:brightness(1.35)}
+100%{transform:scale(1);filter:brightness(1)}
+}
+
+@keyframes legendaryWin{
+0%{transform:scale(.3) rotate(-18deg);filter:brightness(.8) blur(2px)}
+28%{transform:scale(1.4) rotate(12deg);filter:brightness(2.3) drop-shadow(0 0 38px #ffd166)}
+55%{transform:scale(.88) rotate(-6deg);filter:brightness(1.6) drop-shadow(0 0 44px #ff6bd6)}
+100%{transform:scale(1.08);filter:brightness(1.35) drop-shadow(0 0 28px #ffd166)}
+}
+
+.winFx{
+position:fixed;
+inset:0;
+z-index:10;
+display:grid;
+place-items:center;
+pointer-events:none;
+opacity:0;
+visibility:hidden;
+transition:.25s ease;
+}
+
+.winFx.show{
+opacity:1;
+visibility:visible;
+}
+
+.winFxInner{
+position:relative;
+display:grid;
+place-items:center;
+width:min(760px,92vw);
+min-height:360px;
+text-align:center;
+}
+
+.winFxEmoji{
+font-size:118px;
+filter:drop-shadow(0 24px 42px #000);
+}
+
+.winFxTitle{
+margin-top:12px;
+font-size:42px;
+font-weight:1000;
+text-transform:uppercase;
+text-shadow:0 0 24px currentColor;
+}
+
+.winFxValue{
+margin-top:8px;
+font-size:24px;
+font-weight:1000;
+color:#fff;
+}
+
+.winFx.rareFx{background:radial-gradient(circle,#55b6ff33,transparent 65%)}
+.winFx.rareFx .winFxInner{animation:rareReveal 1.2s ease both;color:#8fd0ff}
+
+.winFx.epicFx{background:radial-gradient(circle,#ff6bd63f,transparent 68%)}
+.winFx.epicFx .winFxInner{animation:epicReveal 2.1s ease both;color:#ff9ee7}
+.winFx.epicFx:before{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(110deg,transparent 0 18%,#ff6bd650 23%,transparent 31%),
+linear-gradient(250deg,transparent 0 42%,#55b6ff45 49%,transparent 58%),
+radial-gradient(circle at 50% 50%,transparent 0 20%,#ff6bd61f 22%,transparent 42%);
+animation:epicStage 2.1s ease-in-out both;
+}
+
+.winFx.legendaryFx{
+background:
+radial-gradient(circle,#fff2b655 0 8%,#ff8a3d2f 24%,transparent 62%),
+linear-gradient(135deg,#080b10ee,#251326ee);
+}
+
+.winFx.legendaryFx:before,.winFx.legendaryFx:after{
+content:"";
+position:absolute;
+inset:-30%;
+background:
+radial-gradient(circle at 25% 35%,#ffd166 0 2px,transparent 3px),
+radial-gradient(circle at 70% 22%,#ffffff 0 1px,transparent 3px),
+radial-gradient(circle at 54% 74%,#ff6bd6 0 2px,transparent 4px);
+background-size:120px 120px,170px 170px,210px 210px;
+animation:starFall 5.8s linear infinite;
+}
+
+.winFx.legendaryFx:after{
+filter:blur(3px);
+opacity:.6;
+animation-duration:7.2s;
+}
+
+.winFx.legendaryFx .winFxInner{
+color:#ffe39d;
+animation:legendaryReveal 5.6s cubic-bezier(.12,1,.18,1) both;
+}
+
+@keyframes rareReveal{from{transform:scale(.8);opacity:0}45%{transform:scale(1.08)}to{transform:scale(1);opacity:1}}
+@keyframes epicReveal{from{transform:scale(.65) rotate(-8deg);opacity:0}45%{transform:scale(1.1) rotate(3deg);opacity:1}to{transform:scale(1);opacity:1}}
+@keyframes epicStage{
+0%{opacity:0;transform:scale(.8)}
+25%{opacity:1;transform:scale(1.03)}
+55%{transform:scale(1) skewX(-5deg)}
+100%{opacity:.38;transform:scale(1.12) skewX(5deg)}
+}
+@keyframes legendaryReveal{
+0%{transform:scale(.24) rotate(-18deg);opacity:0;filter:blur(8px)}
+22%{transform:scale(.7) rotate(8deg);opacity:1;filter:blur(0)}
+48%{transform:scale(1.2) rotate(-2deg)}
+72%{transform:scale(.96) rotate(1deg)}
+100%{transform:scale(1);opacity:1}
+}
+@keyframes starFall{to{transform:translate3d(120px,180px,0) rotate(35deg)}}
+
+@media(max-width:700px){
+.tabs span{flex:1;min-width:135px}
+.statStrip{grid-template-columns:1fr;min-width:100%}
+.topBar{margin-top:16px}
+.openTop{align-items:flex-start;flex-direction:column}
+.openInfo{text-align:left}
+}
+
 </style>
 </head>
 
@@ -226,50 +999,89 @@ margin-top:10px;
 <div class="app">
 
 <h2>Cases</h2>
-<div class="money">Money: $<span id="moneyEl">500</span></div>
+<div class="topBar">
+  <div class="money">Cash: $<span id="moneyEl">2500</span></div>
+  <div class="statStrip">
+    <div class="statCard">
+      <span class="statLabel">Items Stored</span>
+      <span class="statValue" id="itemCountEl">0</span>
+    </div>
+    <div class="statCard">
+      <span class="statLabel">Item Value</span>
+      <span class="statValue">$<span id="itemValueEl">0</span></span>
+    </div>
+    <div class="statCard">
+      <span class="statLabel">Net Worth</span>
+      <span class="statValue">$<span id="netWorthEl">2,500</span></span>
+      <span class="rollDelta" id="rollDeltaEl"></span>
+    </div>
+  </div>
+</div>
 
 <div class="tabs">
-<span onclick="showTab('cratesTab')">Crates</span>
+<span onclick="showTab('cratesTab')">Crate Shop</span>
 <span onclick="showTab('inventoryTab')">Inventory</span>
 </div>
 
 <div id="cratesTab"></div>
 
 <div id="inventoryTab" class="hidden">
-<h3>Inventory</h3>
 <div id="inventory" class="grid"></div>
 </div>
 
 <div id="openScreen" class="hidden">
 
+<div class="openTop">
 <button id="backBtn" onclick="backToCrates()">← Back</button>
-
-<h3 id="crateTitle"></h3>
-<div style="text-align:center;font-size:18px;margin-bottom:10px;">
-Cost: $<span id="crateCost"></span>
+<div class="openInfo">
+<div>Crate Price: $<span id="crateCost"></span></div>
+<div id="crateExpected"></div>
+</div>
 </div>
 
-<h4 style="text-align:center">Items & Chances</h4>
+<h3 id="crateTitle"></h3>
+
+<h4 class="sectionTitle">Possible Pulls</h4>
 <div id="lootTable" class="grid"></div>
 
 <button id="openBtn" onclick="openCrate()">OPEN</button>
 
-<div class="spinWrapper">
-<div class="pointer">▼</div>
-<div class="spinContainer">
-<div id="spinTrack" class="spinTrack"></div>
-</div>
+<div id="resultToast" class="resultToast"></div>
+
 </div>
 
+<div id="winFx" class="winFx"></div>
+
+<div id="spinOverlay" class="spinOverlay">
+  <div class="spinWrapper">
+    <div class="spinOverlayTitle" id="spinOverlayTitle">Opening...</div>
+    <div class="pointer">▼</div>
+    <div class="spinContainer">
+      <div id="spinTrack" class="spinTrack"></div>
+    </div>
+  </div>
 </div>
 
 </div>
 
 <script>
-let money = 500
+let money = 2500
 let inventoryItems = []
 let selectedCrate = null
 let opening = false
+let toastTimer = null
+let autosellSettings = {
+  enabled: false,
+  rarities: {
+    common: false,
+    uncommon: false,
+    rare: false,
+    epic: false,
+    legendary: false
+  }
+}
+
+const rarityOrder = ["common", "uncommon", "rare", "epic", "legendary"]
 
 const crates = [
 
@@ -417,7 +1229,7 @@ items:[
 {emoji:"🌙",rarity:"uncommon",chance:30,value:7000},
 {emoji:"🪐",rarity:"rare",chance:20,value:35000},
 {emoji:"🌠",rarity:"epic",chance:10,value:110000},
-{emoji:"🚀",rarity:"epic",chance:4,value:200000},
+{emoji:"🛸",rarity:"epic",chance:4,value:200000},
 {emoji:"👽",rarity:"legendary",chance:1,value:1100000}
 ]
 },
@@ -430,7 +1242,7 @@ items:[
 {emoji:"🌪️",rarity:"uncommon",chance:30,value:9600},
 {emoji:"🔥",rarity:"rare",chance:20,value:50000},
 {emoji:"⚡",rarity:"epic",chance:10,value:150000},
-{emoji:"❄️",rarity:"epic",chance:4,value:240000},
+{emoji:"🌊",rarity:"epic",chance:4,value:240000},
 {emoji:"🌋",rarity:"legendary",chance:1,value:1500000}
 ]
 },
@@ -450,19 +1262,63 @@ items:[
 
 ]
 
+// ---------------- ECONOMY ----------------
+
+const tunedEconomy = {
+  "Bug Crate": { cost: 0, values: [1, 2, 4, 10, 35, 250] },
+  "Food Crate": { cost: 75, values: [8, 18, 40, 90, 150, 3000] },
+  "Ocean Crate": { cost: 220, values: [45, 90, 210, 430, 8000] },
+  "Nature Crate": { cost: 650, values: [120, 260, 550, 1200, 30000] },
+  "Arctic Crate": { cost: 1800, values: [220, 480, 1000, 3000, 52000] },
+  "Jungle Crate": { cost: 6000, values: [700, 1500, 3400, 6500, 7800, 540000] },
+  "Battle Crate": { cost: 20000, values: [2500, 5200, 12000, 23000, 30000, 1800000] },
+  "Vehicle Crate": { cost: 75000, values: [8000, 17000, 38000, 75000, 160000, 6800000] },
+  "Luxury Crate": { cost: 300000, values: [30000, 65000, 150000, 300000, 2500000, 20000000] },
+  "Spooky Crate": { cost: 1200000, values: [120000, 250000, 600000, 1200000, 2500000, 110000000] },
+  "Lucky Crate": { cost: 500000, values: [250, 25000000000] },
+  "Space Crate": { cost: 5000000, values: [500000, 1100000, 2500000, 5000000, 12000000, 450000000] },
+  "Elemental Crate": { cost: 50000000, values: [5000000, 11000000, 25000000, 50000000, 120000000, 4450000000] },
+  "Mythic Crate": { cost: 1000000000, values: [90000000, 200000000, 450000000, 900000000, 2200000000, 96950000000] }
+}
+
+function tuneEconomy() {
+  crates.forEach(crate => {
+    const tune = tunedEconomy[crate.name]
+    if (!tune) return
+    crate.cost = tune.cost
+    crate.items.forEach((item, index) => {
+      item.value = tune.values[index] ?? item.value
+      item.crateName = crate.name
+    })
+  })
+}
+
 // ---------------- SAVE / LOAD ----------------
 
 function saveData() {
   localStorage.setItem("money", money)
   localStorage.setItem("inventory", JSON.stringify(inventoryItems))
+  localStorage.setItem("autosellSettings", JSON.stringify(autosellSettings))
 }
 
 function loadData() {
   const savedMoney = localStorage.getItem("money")
   const savedInventory = localStorage.getItem("inventory")
+  const savedAutosell = localStorage.getItem("autosellSettings")
 
   if (savedMoney !== null) money = parseInt(savedMoney)
   if (savedInventory !== null) inventoryItems = JSON.parse(savedInventory)
+  if (savedAutosell !== null) {
+    const parsed = JSON.parse(savedAutosell)
+    autosellSettings = {
+      ...autosellSettings,
+      ...parsed,
+      rarities: {
+        ...autosellSettings.rarities,
+        ...(parsed.rarities || {})
+      }
+    }
+  }
 }
 
 // ---------------- UTILITY ----------------
@@ -478,33 +1334,181 @@ function rollItem(crate) {
 }
 
 function updateMoney() {
-  moneyEl.textContent = money
+  moneyEl.textContent = formatMoney(money)
+  updateStats()
+  const moneyBox = moneyEl.closest(".money")
+  if (moneyBox) {
+    moneyBox.classList.remove("bump")
+    moneyBox.offsetHeight
+    moneyBox.classList.add("bump")
+    setTimeout(() => moneyBox.classList.remove("bump"), 260)
+  }
   saveData() // Save whenever money changes
+}
+
+function formatMoney(value) {
+  return Number(value || 0).toLocaleString()
+}
+
+function getInventoryValue() {
+  return inventoryItems.reduce((sum, item) => sum + Number(item.value || 0), 0)
+}
+
+function updateStats() {
+  const itemValue = getInventoryValue()
+  const itemCountNode = document.getElementById("itemCountEl")
+  const itemValueNode = document.getElementById("itemValueEl")
+  const netWorthNode = document.getElementById("netWorthEl")
+  if (itemCountNode) itemCountNode.textContent = formatMoney(inventoryItems.length)
+  if (itemValueNode) itemValueNode.textContent = formatMoney(itemValue)
+  if (netWorthNode) netWorthNode.textContent = formatMoney(money + itemValue)
+}
+
+function getExpectedValue(crate) {
+  return crate.items.reduce((sum, item) => sum + (Number(item.value || 0) * Number(item.chance || 0) / 100), 0)
+}
+
+function getRarityLabel(rarity) {
+  return String(rarity || "common").replace(/^\w/, letter => letter.toUpperCase())
+}
+
+function itemMarkup(item, detailClass = "lootMeta") {
+  return `
+    <span class="emoji">${item.emoji}</span>
+    <span class="rarityTag">${getRarityLabel(item.rarity)}</span>
+    <div class="${detailClass}">$${formatMoney(item.value)}</div>
+  `
+}
+
+function showResult(message) {
+  if (!resultToast) return
+  clearTimeout(toastTimer)
+  resultToast.textContent = message
+  resultToast.classList.add("show")
+  toastTimer = setTimeout(() => resultToast.classList.remove("show"), 2600)
+}
+
+function showRollDelta(delta) {
+  const node = document.getElementById("rollDeltaEl")
+  if (!node) return
+  node.className = "rollDelta"
+  node.textContent = `${delta >= 0 ? "+" : "-"}$${formatMoney(Math.abs(delta))}`
+  node.offsetHeight
+  node.classList.add("show", delta >= 0 ? "gain" : "loss")
+}
+
+function shouldAutosell(item) {
+  return Boolean(autosellSettings.enabled && autosellSettings.rarities[item.rarity])
+}
+
+function updateAutosellSetting(key, value) {
+  if (key === "enabled") {
+    autosellSettings.enabled = value
+  } else {
+    autosellSettings.rarities[key] = value
+  }
+  saveData()
+  renderInventory()
+}
+
+function autosellControlsMarkup() {
+  const rarityChecks = rarityOrder.map(rarity => `
+    <label>
+      <input type="checkbox" onchange="updateAutosellSetting('${rarity}', this.checked)" ${autosellSettings.rarities[rarity] ? "checked" : ""}>
+      ${getRarityLabel(rarity)}
+    </label>
+  `).join("")
+
+  return `
+    <div class="autosellPanel">
+      <span class="autosellTitle">Autosell</span>
+      <label>
+        <input type="checkbox" onchange="updateAutosellSetting('enabled', this.checked)" ${autosellSettings.enabled ? "checked" : ""}>
+        Enabled
+      </label>
+      ${rarityChecks}
+    </div>
+  `
 }
 
 function renderInventory() {
   inventory.innerHTML = ""
-  inventoryItems.forEach(i => {
+
+  const existingHeader = inventoryTab.querySelector(".inventoryHeader")
+  if (existingHeader) existingHeader.remove()
+
+  const header = document.createElement("div")
+  header.className = "inventoryHeader"
+  header.innerHTML = `
+    <div>
+      <h3>My Stash</h3>
+      <div class="inventoryStats">${inventoryItems.length} items stacked &bull; $${formatMoney(getInventoryValue())} sell value</div>
+    </div>
+    <div class="inventoryActions">
+      ${autosellControlsMarkup()}
+      <button class="sellAllBtn" onclick="sellAllItems()" ${inventoryItems.length ? "" : "disabled"}>Sell All</button>
+    </div>
+  `
+  inventoryTab.insertBefore(header, inventory)
+
+  if (inventoryItems.length === 0) {
+    inventory.innerHTML = `<div class="emptyInventory">No items yet. Open a crate, then come back here to sell your pulls.</div>`
+    updateStats()
+    saveData()
+    return
+  }
+
+  inventoryItems.forEach((i, index) => {
     const d = document.createElement("div")
     d.className = "itemBox " + i.rarity
-    d.innerHTML = `<span class="emoji">${i.emoji}</span>$${i.value}`
+    d.innerHTML = `
+      <span class="emoji">${i.emoji}</span>
+      <span class="rarityTag">${getRarityLabel(i.rarity)}</span>
+      <div class="itemName">${i.crateName || "Crate Pull"}</div>
+      <strong>$${formatMoney(i.value)}</strong>
+      <button class="sellBtn" onclick="sellItem(${index})">Sell</button>
+    `
     inventory.appendChild(d)
   })
+  updateStats()
   saveData() // Save whenever inventory changes
+}
+
+function sellItem(index) {
+  if (opening) return
+  const item = inventoryItems[index]
+  if (!item) return
+  money += Number(item.value || 0)
+  inventoryItems.splice(index, 1)
+  updateMoney()
+  renderInventory()
+  showResult(`Sold for $${formatMoney(item.value)}`)
+}
+
+function sellAllItems() {
+  if (opening || inventoryItems.length === 0) return
+  const total = getInventoryValue()
+  inventoryItems = []
+  money += total
+  updateMoney()
+  renderInventory()
+  showResult(`Sold everything for $${formatMoney(total)}`)
 }
 
 // ---------------- RENDER ----------------
 
 function renderCrates() {
-  cratesTab.innerHTML = "<h3>Crates</h3><div class='grid'></div>"
+  cratesTab.innerHTML = "<h3>Crate Shop</h3><div class='grid'></div>"
   const grid = cratesTab.querySelector(".grid")
 
   crates.forEach((c, i) => {
+    const preview = c.items.map(item => `<span>${item.emoji}</span>`).join("")
     const d = document.createElement("div")
     d.className = "crate"
     d.innerHTML = `<h3>${c.name}</h3>
-<p>$${c.cost}</p>
-<button onclick="selectCrate(${i})">Open</button>`
+<div class="cratePreview">${preview}</div>
+<div class="crateMeta">${c.cost === 0 ? "Free" : "$" + formatMoney(c.cost)}</div>
+<button onclick="selectCrate(${i})">${c.cost === 0 ? "Open" : "Buy"}</button>`
     grid.appendChild(d)
   })
 }
@@ -515,19 +1519,24 @@ function showTab(id) {
   inventoryTab.classList.add("hidden")
   openScreen.classList.add("hidden")
   document.getElementById(id).classList.remove("hidden")
+  document.querySelectorAll(".tabs span").forEach(tab => tab.classList.remove("active"))
+  if (id === "cratesTab") document.querySelector(".tabs span:nth-child(1)")?.classList.add("active")
+  if (id === "inventoryTab") document.querySelector(".tabs span:nth-child(2)")?.classList.add("active")
 }
 
 function selectCrate(i) {
   selectedCrate = crates[i]
   showTab("openScreen")
   crateTitle.textContent = selectedCrate.name
-  crateCost.textContent = selectedCrate.cost
+  crateCost.textContent = selectedCrate.cost === 0 ? "FREE" : formatMoney(selectedCrate.cost)
+  crateExpected.textContent = selectedCrate.cost === 0 ? " Guaranteed profit" : `Average pull: $${formatMoney(Math.round(getExpectedValue(selectedCrate)))}`
   lootTable.innerHTML = ""
+  resultToast.classList.remove("show")
 
   selectedCrate.items.forEach(x => {
     const d = document.createElement("div")
     d.className = "itemBox " + x.rarity
-    d.innerHTML = `<span class="emoji">${x.emoji}</span>$${x.value}<br>${x.chance}%`
+    d.innerHTML = `${itemMarkup(x)}<div class="lootMeta">${x.chance}% chance</div>`
     lootTable.appendChild(d)
   })
 }
@@ -536,17 +1545,57 @@ function backToCrates() {
   if (opening) return
   spinTrack.innerHTML = ""
   spinTrack.style.transform = "translateX(0)"
+  spinOverlay.classList.remove("show")
+  document.body.classList.remove("spinLocked")
   showTab("cratesTab")
+}
+
+function playWinAnimation(winner, winEl) {
+  const rarity = winner.rarity || "common"
+  const reelClass = {
+    rare: "rareWin",
+    epic: "epicWin",
+    legendary: "legendaryWin"
+  }[rarity]
+
+  winEl.classList.add("popWin")
+  if (reelClass) winEl.classList.add(reelClass)
+
+  if (!["rare", "epic", "legendary"].includes(rarity)) return 650
+
+  const duration = rarity === "legendary" ? 6200 : rarity === "epic" ? 2500 : 1400
+  winFx.className = `winFx show ${rarity}Fx`
+  winFx.innerHTML = `
+    <div class="winFxInner">
+      <div class="winFxEmoji">${winner.emoji}</div>
+      <div class="winFxTitle">${getRarityLabel(rarity)} Pull</div>
+      <div class="winFxValue">$${formatMoney(winner.value)} stash value</div>
+    </div>
+  `
+
+  setTimeout(() => {
+    winFx.className = "winFx"
+    winFx.innerHTML = ""
+  }, duration)
+
+  return duration
 }
 
 // ---------------- OPEN CRATE ----------------
 
 function openCrate() {
-  if (opening || money < selectedCrate.cost) return
+  if (opening) return
+  if (money < selectedCrate.cost) {
+    showResult("Not enough cash. Open the free Bug Crate if you can't afford the others.")
+    return
+  }
 
   opening = true
   openBtn.disabled = true
   backBtn.disabled = true
+  spinOverlayTitle.textContent = `Opening ${selectedCrate.name}`
+  spinOverlay.classList.add("show")
+  document.body.classList.add("spinLocked")
 
   money -= selectedCrate.cost
   updateMoney()
@@ -554,6 +1603,7 @@ function openCrate() {
   spinTrack.style.transition = "none"
   spinTrack.style.transform = "translateX(0)"
   spinTrack.innerHTML = ""
+  spinTrack.classList.remove("spinning")
 
   spinTrack.offsetHeight
 
@@ -570,7 +1620,7 @@ function openCrate() {
   reel.forEach(item => {
     const div = document.createElement("div")
     div.className = "spinItem " + item.rarity
-    div.innerHTML = `<span class="emoji">${item.emoji}</span>$${item.value}`
+    div.innerHTML = `${itemMarkup(item, "spinValue")}`
     spinTrack.appendChild(div)
   })
 
@@ -582,27 +1632,48 @@ function openCrate() {
   setTimeout(() => {
     spinTrack.style.transition = "transform 4.5s cubic-bezier(.08,.6,.2,1)"
     spinTrack.style.transform = `translateX(${target}px)`
+    spinTrack.classList.add("spinning")
   }, 20)
 
   setTimeout(() => {
-    inventoryItems.push(winner)
-    renderInventory()
-
-    money += winner.value
+    const wonItem = {
+      emoji: winner.emoji,
+      rarity: winner.rarity,
+      chance: winner.chance,
+      value: winner.value,
+      crateName: selectedCrate.name
+    }
+    const autosold = shouldAutosell(wonItem)
+    if (autosold) {
+      money += Number(wonItem.value || 0)
+    } else {
+      inventoryItems.push(wonItem)
+    }
+    showRollDelta(Number(winner.value || 0) - Number(selectedCrate.cost || 0))
     updateMoney()
+    renderInventory()
+    spinTrack.classList.remove("spinning")
+    spinOverlay.classList.remove("show")
+    document.body.classList.remove("spinLocked")
+    const animationTime = playWinAnimation(winner, winEl)
+    showResult(autosold ? `${winner.emoji} autosold for $${formatMoney(winner.value)}` : `${winner.emoji} added to stash: $${formatMoney(winner.value)} sell value`)
 
-    opening = false
-    openBtn.disabled = false
-    backBtn.disabled = false
+    setTimeout(() => {
+      opening = false
+      openBtn.disabled = false
+      backBtn.disabled = false
+    }, animationTime)
   }, 4500)
 }
 
 // ---------------- INITIALIZE ----------------
 
+tuneEconomy()
 loadData() // Load saved data first
 renderCrates()
 renderInventory()
 updateMoney()
+showTab("cratesTab")
 </script>
 </body>
 </html>
